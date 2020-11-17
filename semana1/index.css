@@ -24,6 +24,10 @@ nav ul {
     padding-left: 0;
 }
 
+nav a:hover {
+    background-color: white;
+}
+
 main {
     margin-top: 100px;
 }
