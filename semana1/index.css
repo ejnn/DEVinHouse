@@ -24,3 +24,8 @@ input[type="image"] {
     margin-top: 20px;
     border-radius: 15px;
 }
+
+iframe {
+    width: 50vw;
+    height: calc((9/16)*50vw);
+}
