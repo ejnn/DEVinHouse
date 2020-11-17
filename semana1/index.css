@@ -3,6 +3,9 @@ html {
 }
 
 h1 {
+    background: url(images/alienEmoji.png);
+    background-repeat: no-repeat;
+    background-position: 70% 30%;
     font-family: "Verdana";
     font-size: 20pt;
     color: brown;
