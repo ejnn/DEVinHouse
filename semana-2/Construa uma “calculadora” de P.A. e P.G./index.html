@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" >
+    <meta name="viewport"
+	  content="width=device-width, initial-scale=1" >
+    <link rel="stylesheet" href="index.css">
+  </head>
+  
+  <body>
+    <form id="progressionForm">
+      <label for="initialValue"> valor inicial </label>
+      <input type="number" id="initialValue" name="initialValue" required="true">
+
+      <label for="root"> raíz </label>
+      <input type="number" id="root" name="root" required="true">
+
+      <input type="submit" value="Calcular P.A.">
+      <input type="submit" value="Calcular P.G.">
+    </form>
+
+    <ol id="progression"></ol>
+    <script src="script.js"></script>
+  </body>
+</html>
