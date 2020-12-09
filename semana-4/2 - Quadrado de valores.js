@@ -1,1 +1,2 @@
-const resposta = (numeros) => numeros.map((numero) => console.log(numero ** 2));
+const resposta = (numeros) =>
+  numeros.forEach((numero) => console.log(numero ** 2));
