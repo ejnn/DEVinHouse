@@ -1,6 +1,6 @@
 const resposta = (cidade) => {
-  let nome = cidade.nome;
-  let estado = cidade.estado;
+  const nome = cidade.nome;
+  const estado = cidade.estado;
   console.log(nome);
   console.log(estado);
 };
