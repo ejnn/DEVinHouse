@@ -1,6 +1,4 @@
-const resposta = (cidade) => {
-  const nome = cidade.nome;
-  const estado = cidade.estado;
+const resposta = ({ nome, estado }) => {
   console.log(nome);
   console.log(estado);
 };
