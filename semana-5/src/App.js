@@ -1,19 +1,15 @@
 import { hot } from "react-hot-loader/root";
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import mockServer from "./mockServer.js";
 if (process.env.NODE_ENV == "development") {
     mockServer();
 };
 
-const App = () => {
-    useEffect(() => {
-	fetch("http://localhost:9000/alunos")
-	    .then(res => res.json())
-	    .then(json => console.log(json));
-    }, []);
+import StudentConsultation from "./StudentConsultation.js";
 
-  return <div> Huzzah! </div>;
+const App = () => {
+    return <StudentConsultation/>
 };
 
 export default hot(App);
