@@ -1,0 +1,23 @@
+{
+    "data": {
+ 	"type": "restaurantes",
+	"id": "1",
+	"attributes": {
+	    "restaurantes": [
+    		{
+		    "id": "temakin",
+    		    "nome": "Temakin",
+    		    "categoria": "Comida Japonesa",
+    		},
+    		{
+		    "id": "madero",
+    		    "nome": "Madero",
+    		    "categoria": "Steak House",
+    		},
+	    ],
+	},
+	"links": {
+	    "self": "https://api.hipotetica/restaurantes?disponiveis",
+	},
+    },
+}

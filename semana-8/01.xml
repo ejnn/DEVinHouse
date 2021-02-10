@@ -1,0 +1,10 @@
+<pedido>
+  <cliente>
+    <nome>Bezerra da Silva</nome>
+    <endereço>Rua Sete de Setembro</endereço>
+    <pagamento>Dinheiro</pagamento>
+  </cliente>
+  <item>Cocada</item>
+  <item>Orégano</item>
+  <total>5000</total>
+</pedido>

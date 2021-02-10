@@ -1,0 +1,14 @@
+{
+    "pedido": {
+	"cliente": {
+	    "nome": "Bezerra da Silva",
+	    "endereço": "Rua Sete de Setembro",
+	    "pagamento": "Dinheiro",
+	},
+	"itens": [
+	    "Cocada",
+	    "Orégano",
+	],
+	"total": 5000,
+    }
+}
