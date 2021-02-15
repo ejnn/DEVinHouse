@@ -5,50 +5,46 @@ import java.util.Arrays;
 
 class Exercicio14 {
 
-    private static BinaryOperator<Double> getReducer(String id) {
+    private static BinaryOperator<Double> getBinaryOperator(String id) {
 
-	BinaryOperator<Double> reducer;
+	BinaryOperator<Double> binaryOperator;
 
 	switch (id) {
 	case "somar":
-	    reducer = (acc, cur) -> acc + cur;
+	    binaryOperator = (a, b) -> a + b;
 	    break;
 	case "subtrair":
-	    reducer = (acc, cur) -> acc - cur;
+	    binaryOperator = (a, b) -> a - b;
 	    break;
 	case "multiplicar":
-	    reducer = (acc, cur) -> acc * cur;
+	    binaryOperator = (a, b) -> a * b;
 	    break;
 	case "dividir":
-	    reducer = (acc, cur) -> acc / cur;
+	    binaryOperator = (a, b) -> a / b;
 	    break;
 	default:
-	    return getReducer("somar");
+	    return getBinaryOperator("somar");
 	}
 
-	return reducer;
+	return binaryOperator;
     }
 
     public static void main(String... args) {
 
 	Scanner scanner = new Scanner(System.in);
-
-	Double[] arguments = new Double[2];
 	
 	System.out.printf("Por favor, insira o primeiro argumento:%n");
-	arguments[0] = Double.valueOf(scanner.nextLine().trim());
+	Double firstArg = Double.valueOf(scanner.nextLine());
 
 	System.out.printf("e agora, o segundo:%n");
-	arguments[1] = Double.valueOf(scanner.nextLine().trim());
+	Double secondArg = Double.valueOf(scanner.nextLine());
 
 	System.out.printf("Finalmente, digite uma operação "
 			  + "(somar, subtrair, multiplicar ou dividir):%n");
 
-	String reducerId = scanner.nextLine().trim();
+	String operatorId = scanner.nextLine().trim();
 
-	System.out.printf("Resultado: %.2f%n",
-			  Arrays.stream(arguments)
-			  .reduce(getReducer(reducerId)).get());
+	System.out.printf("Resultado: %.2f%n", getBinaryOperator(operatorId).apply(firstArg, secondArg));
     }
     
 }
