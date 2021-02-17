@@ -5,30 +5,6 @@ import java.util.Arrays;
 
 class Exercicio14 {
 
-    private static BinaryOperator<Double> getBinaryOperator(String id) {
-
-	BinaryOperator<Double> binaryOperator;
-
-	switch (id) {
-	case "somar":
-	    binaryOperator = (a, b) -> a + b;
-	    break;
-	case "subtrair":
-	    binaryOperator = (a, b) -> a - b;
-	    break;
-	case "multiplicar":
-	    binaryOperator = (a, b) -> a * b;
-	    break;
-	case "dividir":
-	    binaryOperator = (a, b) -> a / b;
-	    break;
-	default:
-	    return getBinaryOperator("somar");
-	}
-
-	return binaryOperator;
-    }
-
     public static void main(String... args) {
 
 	Scanner scanner = new Scanner(System.in);
@@ -45,6 +21,35 @@ class Exercicio14 {
 	String operatorId = scanner.nextLine().trim();
 
 	System.out.printf("Resultado: %.2f%n", getBinaryOperator(operatorId).apply(firstArg, secondArg));
+    }
+
+    private static BinaryOperator<Double> getBinaryOperator(String id) {
+
+	BinaryOperator<Double> binaryOperator;
+
+	switch (id) {
+
+	case "somar":
+	    binaryOperator = (a, b) -> a + b;
+	    break;
+
+	case "subtrair":
+	    binaryOperator = (a, b) -> a - b;
+	    break;
+
+	case "multiplicar":
+	    binaryOperator = (a, b) -> a * b;
+	    break;
+
+	case "dividir":
+	    binaryOperator = (a, b) -> a / b;
+	    break;
+
+	default:
+	    return getBinaryOperator("somar");
+	}
+
+	return binaryOperator;
     }
     
 }
