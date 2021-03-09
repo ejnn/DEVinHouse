@@ -40,6 +40,19 @@ class ContaBancaria {
 	return this.saldo;
     }
 
+    public String recuperaDadosParaImpressao() {
+	return String.format("Nome do titular: %s%n"
+			     + "Número da conta: %d%n"
+			     + "Agência: %d%n"
+			     + "Saldo: %.2f%n"
+			     + "Data de abertura: %s%n",
+			     nomeDoTitular,
+			     numero,
+			     agencia,
+			     saldo,
+			     dataDeAbertura);
+    }
+
 }
 
 class TestaConta {
