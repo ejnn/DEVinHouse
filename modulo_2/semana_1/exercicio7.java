@@ -2,9 +2,10 @@ import java.lang.Math;
 
 class ContaBancaria {
 
-    public static final double LIMITE = 2000;
+    public static final double SAQUE_MAXIMO = 2000;
+    private static final UniqueIdGenerator idGenerator = new UniqueIdGenerator();
 
-
+    private int identificador = ContaBancaria.idGenerator.generateId();
     private String nomeDoTitular;
     private int numero;
     private int agencia;
@@ -22,7 +23,7 @@ class ContaBancaria {
 
     public void sacar(double valor) {
 
-	double novoSaldo = this.saldo - Math.min(LIMITE, valor);
+	double novoSaldo = this.saldo - Math.min(SAQUE_MAXIMO, valor);
 
 	if (novoSaldo < 0) {
 	    this.saldo = 0;
@@ -46,13 +47,25 @@ class ContaBancaria {
 			     + "Agência: %d%n"
 			     + "Saldo: %.2f%n"
 			     + "Data de abertura: %s%n",
-			     nomeDoTitular,
-			     numero,
-			     agencia,
-			     saldo,
-			     dataDeAbertura);
+			     this.nomeDoTitular,
+			     this.numero,
+			     this.agencia,
+			     this.saldo,
+			     this.dataDeAbertura);
     }
 
+    public int getIdentificador() {
+	return this.identificador;
+    }
+}
+
+class UniqueIdGenerator {
+
+    private int availableId = 0;
+
+    public int generateId() {
+	return this.availableId++;
+    }
 }
 
 class TestaConta {
@@ -61,6 +74,16 @@ class TestaConta {
 	testeSaque();
 	testeDeposito();
 	testeLimite();
+	testeIdentificadores();
+    }
+
+    private static void testeIdentificadores() {
+
+	ContaBancaria a = new ContaBancaria();
+	ContaBancaria b = new ContaBancaria();
+
+	boolean success = a.getIdentificador() != b.getIdentificador();
+	System.out.printf("[%s] identificadores únicos por conta%n", success ? "SUCCESS" : "FAILURE");
     }
 
     private static void testeSaque() {
@@ -88,12 +111,13 @@ class TestaConta {
 
     private static void testeLimite() {
 
-	ContaBancaria conta = new ContaBancaria(ContaBancaria.LIMITE * 2);
+	ContaBancaria conta = new ContaBancaria(ContaBancaria.SAQUE_MAXIMO * 2);
 
-	conta.sacar(ContaBancaria.LIMITE + 1);
+	conta.sacar(ContaBancaria.SAQUE_MAXIMO + 1);
 
-	boolean sucesso = conta.verificaSaldo() == ContaBancaria.LIMITE;
+	boolean sucesso = conta.verificaSaldo() == ContaBancaria.SAQUE_MAXIMO;
 	System.out.printf("[%s] limite de saque%n", sucesso ? "SUCCESS" : "FAILURE");
+
     }
 
 }
