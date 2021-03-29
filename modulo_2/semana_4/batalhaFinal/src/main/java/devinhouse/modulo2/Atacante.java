@@ -1,5 +1,8 @@
 package devinhouse.modulo2;
 
 public interface Atacante {
-    void atacar(Personagem alvo);
+    default void atacar(Personagem alvo) {
+	System.out.printf("Ataque default; instakill!%n");
+	alvo.setSaude(0);
+    }
 }
