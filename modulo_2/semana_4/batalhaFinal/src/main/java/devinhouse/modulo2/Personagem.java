@@ -1,3 +1,5 @@
+package devinhouse.modulo2;
+
 public abstract class Personagem {
     private int saude;
     private int ataque;
