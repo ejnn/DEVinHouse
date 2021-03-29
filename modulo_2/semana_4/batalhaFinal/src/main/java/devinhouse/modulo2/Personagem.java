@@ -1,10 +1,14 @@
 package devinhouse.modulo2;
 
 public abstract class Personagem {
+
     private int saude;
     private int ataque;
     private int defesa;
 
+    public Personagem() {
+    };
+    
     public Personagem(int saude, int ataque, int defesa) {
 	this.saude = saude;
 	this.ataque = ataque;

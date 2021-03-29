@@ -2,3 +2,6 @@
 newItem.sh
 node_modules
 *.class
+.#*
+#*
+*.jar

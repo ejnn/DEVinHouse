@@ -1,4 +1,4 @@
-package devinhouse.modulo2;
+package devinhouse.modulo2.enums;
 
 public enum Motivacao {
     VINGANCA,
