@@ -15,6 +15,9 @@ import devinhouse.modulo2.classes.Paladino;
 import devinhouse.modulo2.classes.Arqueiro;
 import devinhouse.modulo2.classes.Mago;
 
+import devinhouse.modulo2.inimigos.Armeiro;
+import devinhouse.modulo2.inimigos.Alquimista;
+import devinhouse.modulo2.inimigos.Lider;
 
 public class BatalhaFinal {
     
@@ -103,9 +106,7 @@ public class BatalhaFinal {
 			  + "Você só pode ir à frente, ou desistir.%n");
 	
 	System.out.printf("Digite sua escolha:%n");
-	String escolha = input.nextLine().trim();
-	
-	if (escolha.equalsIgnoreCase("desistir")) {
+	if (input.nextLine().trim().equalsIgnoreCase("desistir")) {
 	    System.out.println("O medo invade o seu coração e você sente que ainda não está à altura do desafio.%n"
 			       + "Você se volta para a noite lá fora, e corre em direção à segurança.");
 	    System.exit(0);
@@ -118,9 +119,7 @@ public class BatalhaFinal {
 			   + "e pondera sobre como passar pela porta.");
 	
 	System.out.printf("Passar pela porta ANDANDO CUIDADOSAMENTE, CORRENDO ou SALTANDO?%n");
-	String comando = input.nextLine().trim().toLowerCase();
-	
-	switch (comando) {
+	switch (input.nextLine().trim().toLowerCase()) {
 	    
 	case "saltando":
 	    System.out.println("Você se concentra e pula em direção à luz, saltando de antes da porta até o interior da sala.");
@@ -163,20 +162,22 @@ public class BatalhaFinal {
 			   + "Ali, de pé entre você e a porta fechada, bloqueando o caminho do seu destino, está um dos capitães do inimigo.\n"
 			   + "Um orque horrendo, de armadura, capacete e espada em punho, em posição de combate.\n"
 			   + "Ele avança em sua direção.");
-	// TODO: instanciar objeto Armeiro
+	Armeiro armeiro = new Armeiro();
 	// TODO: iniciar loop de combate, inimigo ataca primeiro
 	
 	System.out.println("Após derrotar o Armeiro, você percebe que seus equipamentos estão muito danificados.\n"
 			   + "Olha em volta, encarando todas aquelas peças de armaduras resistentes e em ótimo estado.");
 	
-	// TODO: perguntar ao jogador se ele quer ou não pegar as armaduras novas.
-	// TODO: Se escolher pegar
-	System.out.println("Você resolve usar os equipamentos do inimigo contra ele, e trocar algumas peças suas,\n"
-			   + "que estavam danificadas, pelas peças de armaduras existentes na sala.\n"
-			   + "De armadura nova, você se sente mais protegido para os desafios à sua frente.");
-	// TODO: deve ser acrescentado +5 pontos de defesa para o jogador.
-	// TODO: se não
-	System.out.println("Você decide que não precisa utilizar nada que venha das mãos do inimigo.");
+	System.out.printf("Pegar as armaduras?%n");
+
+	if (input.nextLine().trim().equalsIgnoreCase("sim")) {
+	    System.out.println("Você resolve usar os equipamentos do inimigo contra ele, e trocar algumas peças suas,\n"
+			       + "que estavam danificadas, pelas peças de armaduras existentes na sala.\n"
+			       + "De armadura nova, você se sente mais protegido para os desafios à sua frente.");
+	    jogador.setDefesa(jogador.getDefesa() + 5);
+	} else {
+	    System.out.println("Você decide que não precisa utilizar nada que venha das mãos do inimigo.");
+	}
 	
 	System.out.println("Em uma mesa, você encontra uma chave dourada, e sabe que aquela chave abre uma das fechaduras da porta do líder inimigo.\n"
 			   + "Você pega a chave e guarda numa pequena bolsa que leva presa ao cinto.");
@@ -191,17 +192,21 @@ public class BatalhaFinal {
 	System.out.println("No fundo da sala, olhando em sua direção, está outro dos capitães do inimigo.\n"
 			   + "Um orque horrendo, de armadura, cajado em punho, em posição de combate. Ele avança em sua direção.");
 	// TODO: instanciar objeto Alquimista
+	Alquimista alquimista = new Alquimista();
 	// TODO: iniciar loop de combate, inimigo ataca primeiro
 	
 	System.out.println("Após derrotar o Alquimista, você olha em volta, tentando reconhecer alguma poção do estoque do inimigo.\n"
 			   + "Em uma mesa, você reconhece uma pequena garrafa de vidro contendo um líquido levemente rosado,\n"
 			   + "pega a garrafa e pondera se deve beber um gole.");
-	// TODO: perguntar ao jogador se ele quer ou não beber.
-	// TODO: Se escolher beber
-	System.out.println("Você se sente revigorado para seguir adiante!");
-	// TODO: pontos de saúde do jogador devem ser restaurados 100%
-	// TODO: se não
-	System.out.println("Você fica receoso de beber algo produzido pelo inimigo.");
+
+	System.out.printf("Beber?");
+
+	if (input.nextLine().trim().equalsIgnoreCase("sim")) {
+	    System.out.println("Você se sente revigorado para seguir adiante!");
+	    jogador.setSaude(Jogador.SAUDE_MAXIMA);
+	} else {
+	    System.out.println("Você fica receoso de beber algo produzido pelo inimigo.");
+	}
 	
 	System.out.println("Ao lado da porta, você vê uma chave dourada em cima de uma mesa,\n"
 			   + "e sabe que aquela chave abre a outra fechadura da porta do líder inimigo.\n"
@@ -217,13 +222,25 @@ public class BatalhaFinal {
 	
 	System.out.println("Ele percebe sua chegada e se levanta com um salto, apanhando seu machado de guerra de lâmina dupla.");
 	
+	System.out.printf("Atacar ou se preparar para o combate?");
+
 	// TODO: jogador deve decidir se ataca ou espera
 	// TODO: iniciar loop de combate, dependendo da resposta do jogador, ele ataca primeiro
+	if (input.nextLine().trim().equalsIgnoreCase("atacar")) {
+	} else {
+	    System.out.printf("Não há tempo! Ele ataca...%n");
+	}
 	
 	System.out.println("Você conseguiu!");
-	// TODO: exibir mensagem de vitória de acordo com a motivação do jogador:
-	// se vingança: Você obteve sua vingança. Você se ajoelha e cai no choro, invadido por uma sensação de alívio e felicidade. Você se vingou, tudo que sempre quis, está feito. Agora você pode seguir sua vida.
-	// se glória: O êxtase em que você se encontra não cabe dentro de si. Você se ajoelha e grita de alegria. A glória o aguarda, você a conquistou.
+	switch (jogador.getMotivacao()) {
+	case Motivacao.VINGANCA:
+	    System.out.printf("Você obteve sua vingança. Você se ajoelha e cai no choro, invadido por%n"
+			      + "uma sensação de alívio e felicidade. Você se vingou, tudo que sempre quis, está feito.%n"
+			      + "Agora você pode seguir sua vida.%n");
+	case Motivacao.GLORIA:
+	    System.out.printf("O êxtase em que você se encontra não cabe dentro de si.%n"
+			      + "Você se ajoelha e grita de alegria. A glória o aguarda, você a conquistou.%n");
+	}
 	
 	System.out.println("Você se levanta, olha para os prisioneiros, vai de um em um e os liberta,\n"
 			   + "e todos vocês saem em direção à noite, retornando à cidade.\n"
