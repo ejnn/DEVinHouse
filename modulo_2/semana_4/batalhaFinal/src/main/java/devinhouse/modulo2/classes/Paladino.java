@@ -9,17 +9,21 @@ import devinhouse.modulo2.enums.Motivacao;
 
 public class Paladino extends Jogador {
 
-    private Arma[] armasValidas = {
+    private static Arma[] armasDisponiveis = {
 	Arma.MARTELO,
 	Arma.CLAVA
     };
 
-    private void validateArma(Arma arma) {
-	if (!Arrays.asList(armasValidas).contains(arma)) throw new RuntimeException("arma inválida para um paladino!");
+    private static void validateArma(Arma arma) {
+	if (!Arrays.asList(armasDisponiveis).contains(arma)) throw new RuntimeException("arma indisponível para um paladino!");
+    }
+
+    public static Arma[] getArmasDisponiveis() {
+	return armasDisponiveis;
     }
 
     public Paladino(String nome, Sexo sexo, Motivacao motivacao, Arma arma) {
 	super(13, 18, nome, sexo, motivacao, arma);
-	validateArma(arma);
+	Paladino.validateArma(arma);
     }
 }

@@ -10,12 +10,11 @@ public abstract class Jogador extends Personagem implements Atacante {
 
     final static int SAUDE_MAXIMA = 200;
 
-    private String nome;
-
-    private void validateNome(String nome) {
+    private static void validateNome(String nome) {
 	if (nome.isEmpty()) throw new RuntimeException("nome de jogador inválido!");
     }
 
+    private String nome;
     private Sexo sexo;
     private Motivacao motivacao;
     private Arma arma;
@@ -27,7 +26,7 @@ public abstract class Jogador extends Personagem implements Atacante {
 		   Arma arma) {
 	super(Jogador.SAUDE_MAXIMA, ataque, defesa);
 
-	validateNome(nome);
+	Jogador.validateNome(nome);
 	this.nome = nome;
 
 	this.sexo = sexo;

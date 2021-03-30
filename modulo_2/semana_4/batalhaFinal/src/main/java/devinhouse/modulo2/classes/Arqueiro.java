@@ -9,17 +9,21 @@ import devinhouse.modulo2.enums.Motivacao;
 
 public class Arqueiro extends Jogador {
 
-    private Arma[] armasValidas = {
+    private static Arma[] armasDisponiveis = {
 	Arma.ARCO,
 	Arma.BESTA
     };
 
-    private void validateArma(Arma arma) {
-	if (!Arrays.asList(armasValidas).contains(arma)) throw new RuntimeException("arma inválida para um arqueiro!");
+    private static void validateArma(Arma arma) {
+	if (!Arrays.asList(armasDisponiveis).contains(arma)) throw new RuntimeException("arma indisponível para um arqueiro!");
+    }
+
+    public static Arma[] getArmasDisponiveis() {
+	return armasDisponiveis;
     }
 
     public Arqueiro(String nome, Sexo sexo, Motivacao motivacao, Arma arma) {
 	super(18, 13, nome, sexo, motivacao, arma);
-	validateArma(arma);
+	Arqueiro.validateArma(arma);
     }
 }

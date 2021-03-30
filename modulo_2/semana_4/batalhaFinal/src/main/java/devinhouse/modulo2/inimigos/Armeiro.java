@@ -1,6 +1,6 @@
 package devinhouse.modulo2.inimigos;
 
-import devinhouse.modulo2.Inimigo;
+import devinhouse.modulo2.inimigos.Inimigo;
 import devinhouse.modulo2.enums.Arma;
 
 public class Armeiro extends Inimigo {

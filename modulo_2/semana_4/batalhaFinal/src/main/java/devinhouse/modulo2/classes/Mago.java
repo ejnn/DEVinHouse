@@ -9,17 +9,21 @@ import devinhouse.modulo2.enums.Motivacao;
 
 public class Mago extends Jogador {
 
-    private Arma[] armasValidas = {
+    private static Arma[] armasDisponiveis = {
 	Arma.CAJADO,
 	Arma.LIVRO_DE_MAGIAS
     };
 
-    private void validateArma(Arma arma) {
-	if (!Arrays.asList(armasValidas).contains(arma)) throw new RuntimeException("arma inválida para um mago!");
+    private static void validateArma(Arma arma) {
+	if (!Arrays.asList(armasDisponiveis).contains(arma)) throw new RuntimeException("arma indisponível para um mago!");
+    }
+
+    public static Arma[] getArmasDisponiveis() {
+	return armasDisponiveis;
     }
 
     public Mago(String nome, Sexo sexo, Motivacao motivacao, Arma arma) {
 	super(19, 11, nome, sexo, motivacao, arma);
-	validateArma(arma);
+	Mago.validateArma(arma);
     }
 }
